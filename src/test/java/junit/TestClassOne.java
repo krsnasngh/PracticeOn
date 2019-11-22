@@ -1,6 +1,7 @@
 package junit;
 
 import org.junit.*;
+import org.junit.experimental.categories.Category;
 
 public class TestClassOne {
 
@@ -20,6 +21,7 @@ public class TestClassOne {
     }
 
     @Test
+ //   @Category(Regression.class) // Need To Create Interface With name Regression.
     public void testTwo(){
         System.out.println("----- Running Test 2 In Test Class One -----");
     }

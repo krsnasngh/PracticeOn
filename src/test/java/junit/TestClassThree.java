@@ -2,6 +2,8 @@ package junit;
 
 import org.junit.*;
 
+import java.io.IOException;
+
 public class TestClassThree {
 
     @Before
@@ -34,6 +36,26 @@ public class TestClassThree {
     @Test
     public void testTwo(){
         System.out.println("----- Running Test 2 In Test Class Three -----");
+    }
+
+    @Test
+    public void exceptionOne() throws IOException {
+        throw new IOException("---- Exception Test One In Class Three ----");
+    }
+
+    @Test(expected = IOException.class)
+    public void exceptionTwo() throws IOException {
+        throw new IOException("---- Exception Test Two In Class Three ----");
+    }
+
+    @Test(timeout = 0L)
+    public void timeoutThree() {
+        System.out.println("---- Timeout Test One In Test Three With 0L ----");
+    }
+
+    @Test(timeout = 5)
+    public void timeoutFour() {
+        System.out.println("---- Timeout Test Two In Test Three With 5L ----");
     }
 
     @AfterClass

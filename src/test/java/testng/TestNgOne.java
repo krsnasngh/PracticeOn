@@ -7,6 +7,7 @@ import org.testng.annotations.*;
  * More Than One Annotations Can Be Given to An Method.
  * If @BeforeGroups Is Mentioned But There Is No Groups Mentioned Then It Won't Run.
  */
+
 public class TestNgOne {
 
     private static int count = 0;

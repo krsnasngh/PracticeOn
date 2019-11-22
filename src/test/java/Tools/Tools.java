@@ -50,22 +50,24 @@ public class Tools {
                 });
     }
 
-    public static void findTextInThisWorkSpace(String workSpace, String textToFind) {
+    private static void findTextInThisWorkSpace(String workSpace, String textToFind) {
 
-        List<File> l = (List<File>) FileUtils.listFiles(new File(workSpace), new String[]{"java", "properties"}, true);
+        List<File> l = (List<File>) FileUtils.listFiles(new File(workSpace), new String[]{"java", "properties", "xml"}, true);
         l.parallelStream().filter(a -> {
-            String allDate = "";
+            String allData = "";
             try {
-                allDate = Files.readString(a.toPath());
+//                allData = Files.readString(a.toPath());
+            	throw new IOException("");
             } catch (IOException e) {
                 System.err.println("Error Here : " + a.getAbsolutePath());
             }
-            return allDate.toLowerCase().contains(textToFind.toLowerCase());
+            return allData.toLowerCase().contains(textToFind.toLowerCase());
         }).forEach(x -> System.out.println(x.getAbsolutePath()));
     }
 
     public static void main(String[] args) {
 
-        filterForGivenRegex("D:\\", "Excel");
+//        filterForGivenRegex("D:\\", "Excel");
+        findTextInThisWorkSpace("F:\\ABD", "winium");
     }
 }

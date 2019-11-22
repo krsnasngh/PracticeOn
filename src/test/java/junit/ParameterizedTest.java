@@ -1,6 +1,7 @@
 package junit;
 
 import org.junit.*;
+import org.junit.rules.Timeout;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
@@ -14,11 +15,21 @@ public class ParameterizedTest {
     private Object firstParam;
     private Object secondParam;
 
+/*
+    @Parameterized.Parameter(value = 0)
+    private Object firstParam;
+    @Parameterized.Parameter(value = 1)
+    private Object secondParam;
+*/
+
     public ParameterizedTest(Object a, Object b){
 
         this.firstParam = a;
         this.secondParam = b;
     }
+
+    @Rule
+    public Timeout globalTimeout = Timeout.seconds(2);
 
     @Parameterized.Parameters
     public static Object[][] parametersHere() {
